@@ -12,7 +12,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Random;
-import java.text.DecimalFormat;
+
 
 public class Assignment35 {
 
