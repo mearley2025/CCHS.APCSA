@@ -12,7 +12,7 @@ import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.Random;
-
+import java.text.DecimalFormat;
 
 public class Assignment35 {
 
@@ -50,8 +50,9 @@ public class Assignment35 {
         
         
         Random generator = new Random();
-        int number = generator.nextInt(100000000, (int) (999*Math.pow(10, 18)));
-        System.out.println("Random Number: " + number);
+        double number = generator.nextDouble(100000000, 999E18);
+        java.text.DecimalFormat df1 = new java.text.DecimalFormat("##,###.##################");
+        System.out.println("Random Number: " + df1.format(number));
         //Question 4, generating a random number between a 10,000,000 and 999e18, outputting without scientific notation
     }
 }
