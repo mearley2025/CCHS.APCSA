@@ -90,6 +90,8 @@ class Car{ // creating a class that will be used to define the state of object(s
     }//same thing but with double
     public void setPrice (double inPrice){
         price = inPrice;
+        
+        
     }
    
     
