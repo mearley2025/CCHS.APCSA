@@ -34,29 +34,37 @@ public class Assignment38 {
         dollars.setMoney(amount);
         dollars.setMonths(months);
         
-        System.out.println(dollars);
+        System.out.println("this is the amount of months: "+dollars.getPay());
         
     }
 }
 
 class InterestRateCalculator {
-    public final double RATE = .10;//10%
-    private double inputAmount = 0;
-    private double inputMonths = 0;
+    public final double RATE = .035;//3.5%
+    private double inputAmount;
+    private double inputMonths;
+    private double remainAmount;
+    private double remainMonths;
+    private double toPay;
 
     public void setMoney (double inMoney){
-        inputAmount = inMoney;
+        inputAmount = inMoney;//setting inital number equal to user input
     }
     public void setMonths (double inMonths){
-        inputMonths = inMonths;
+        inputMonths = inMonths;//setting months equal to user input
     }
     
     
-    
-    public String toString(){
-            String results = ""; //returns the state of the object (class) as a string
-            results = "input amount check:" + inputAmount + "\n" +
-                    "months check:" + inputMonths;
-            return results;
+    public void theMath(){
+        toPay = (remainAmount*RATE+remainAmount)/inputMonths;
+        
+        remainAmount = inputAmount-toPay;
+        inputMonths = inputMonths-1;
+    }
+    public double getPay(){
+        return toPay;
+    }
+    public double getMonths(){
+        return inputMonths;
     }
 }
