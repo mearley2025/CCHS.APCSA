@@ -10,8 +10,11 @@ package com.mycompany.assignment38;
  */
 
 /*
-Math Planning:
-trying to output how much you need to pay each month with interest along with total amount paid (so far) and amounnt needed to pay back (what is left)
+Requirements:
+1. user defined input of money and months
+2. output amount needed to pay per month with interest
+3. output amount you still need to pay
+4. output amount you have already paid
 */
 
 import java.util.Scanner;
@@ -34,13 +37,21 @@ public class Assignment38 {
         dollars.setMoney(amount);//giving object-specific values to be used by the class
         dollars.setMonths(months);
         
-        for(int i = (int) dollars.getMonths(); i > 0; i--){
-           double payment = dollars.theMath(); // mkaing a variable equal to payment needed based on month
-           System.out.println("\nMonthy Payment: " + currency.format(payment));
-           System.out.println("Amount left: " + currency.format(dollars.getPay()));
-           System.out.println("Amount paid so far: " + currency.format(dollars.getTotalPaid()) + "\n"); 
-       }
-        
+        for(int i = (int) dollars.getMonths(); i > 0; i--){//limits the program so that it stops when months run out, (no negative months)
+           double payment = dollars.theMath(); // making a variable equal to payment needed based on month, allows for easier acess beow
+           //printing out information
+           if(i!=1){//applies to all months but the last
+            System.out.println("\nMonthy Payment: " + currency.format(payment));
+            System.out.println("Interest paid: " + currency.format(dollars.getinterestPaid()));
+            System.out.println("Amount left: " + currency.format(dollars.getPay()));
+            System.out.println("Amount paid so far: " + currency.format(dollars.getTotalPaid()) + "\n"); 
+           }else{//last month
+            System.out.println("\nMonthy Payment: " + currency.format(payment));
+            System.out.println("Amount left: $0.0");//gets rid of the negative number resluting from extra cash needed to pay due to interest, only occurs on last month
+            System.out.println("Amount paid so far: " + currency.format(dollars.getTotalPaid()) + "\n");
+           }
+           
+       }  
     }
 }
 
@@ -63,9 +74,9 @@ class InterestRateCalculator {
         inputAmount -= payment; // updating input amount by subtracting what you just payed
         totalPaid += payment; // updating total paid by adding what you just paid
         inputMonths--; // updating remaning month by subtracting one
-        return payment;
+        return payment;//returning value of math above, what you need to pay (varies per month)
     }
-    
+    //additional values to be used
     public double getPay(){
         return inputAmount;
     }
@@ -74,5 +85,10 @@ class InterestRateCalculator {
     }
     public double getMonths(){
         return inputMonths;
+    }
+    //additional feature, outputting what you are paying for interest
+    public double getinterestPaid(){
+        double iPayment = (inputAmount*RATE);
+        return iPayment;
     }
 }
