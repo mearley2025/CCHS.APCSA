@@ -36,7 +36,7 @@ public class Assignment38 {
         
         for(int i = (int) dollars.getMonths(); i > 0; i--){
            double payment = dollars.theMath(); // mkaing a variable equal to payment needed based on month
-           System.out.println("\n Monthy Payment: " + currency.format(payment));
+           System.out.println("\nMonthy Payment: " + currency.format(payment));
            System.out.println("Amount left: " + currency.format(dollars.getPay()));
            System.out.println("Amount paid so far: " + currency.format(dollars.getTotalPaid()) + "\n"); 
        }
@@ -59,15 +59,11 @@ class InterestRateCalculator {
     
     
     public double theMath(){
-        double monthlyInterest = (inputAmount * RATE) / 12; // calculating monthly interest
-        double principalPayment = inputAmount / inputMonths; // calculating principal part of the payment
-        double totalPayment = monthlyInterest + principalPayment; // total payment is interest + principal
-
-        inputAmount -= principalPayment; // reduce the remaining balance by principal only
-        totalPaid += totalPayment; // updating total paid by adding the total payment
-        inputMonths--; // updating remaining months
-
-        return totalPayment;
+        double payment = (inputAmount * RATE + inputAmount) / inputMonths;
+        inputAmount -= payment; // updating input amount by subtracting what you just payed
+        totalPaid += payment; // updating total paid by adding what you just paid
+        inputMonths--; // updating remaning month by subtracting one
+        return payment;
     }
     
     public double getPay(){
