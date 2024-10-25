@@ -59,11 +59,15 @@ class InterestRateCalculator {
     
     
     public double theMath(){
-        double payment = (inputAmount * RATE + inputAmount) / inputMonths;
-        inputAmount -= payment; // updating input amount by subtracting what you just payed
-        totalPaid += payment; // updating total paid by adding what you just paid
-        inputMonths--; // updating remaning month by subtracting one
-        return payment;
+        double monthlyInterest = (inputAmount * RATE) / 12; // calculating monthly interest
+        double principalPayment = inputAmount / inputMonths; // calculating principal part of the payment
+        double totalPayment = monthlyInterest + principalPayment; // total payment is interest + principal
+
+        inputAmount -= principalPayment; // reduce the remaining balance by principal only
+        totalPaid += totalPayment; // updating total paid by adding the total payment
+        inputMonths--; // updating remaining months
+
+        return totalPayment;
     }
     
     public double getPay(){
