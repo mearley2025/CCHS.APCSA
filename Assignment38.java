@@ -11,41 +11,44 @@ package com.mycompany.assignment38;
 
 /*
 Math Planning:
-trying to output how much you need to pay each month along with total amount paid (so far) and amounnt needed to pay back (what is left)
-
-using the eq: 
-monthy payment = [loan amount * interest(1+interest)^number of months]/[(1+interest)^number of months -1]
+trying to output how much you need to pay each month with interest along with total amount paid (so far) and amounnt needed to pay back (what is left)
 */
 
 import java.util.Scanner;
 import java.text.NumberFormat;
+import java.util.Locale;
+
 public class Assignment38 {
 
     public static void main(String[] args) {
         InterestRateCalculator dollars = new InterestRateCalculator(); //creating new object
+        NumberFormat currency = NumberFormat.getCurrencyInstance(Locale.US);//creating method to use
+
+        //user input section
         System.out.println("Input Financial Amount: ");
         Scanner scan = new Scanner (System.in);
-        double amount = scan.nextDouble();//asking for user input of amount
-        
+        double amount = scan.nextDouble();//setting input to finacial amount
         System.out.println("Months?");
-        Scanner scan2 = new Scanner (System.in);
-        double months = scan2.nextDouble();//asking for number of months
+        double months = scan.nextDouble();//setting input to number of months
        
-        dollars.setMoney(amount);
+        dollars.setMoney(amount);//giving object-specific values to be used by the class
         dollars.setMonths(months);
         
-        System.out.println("this is the amount of months: "+dollars.getPay());
+        for(int i = (int) dollars.getMonths(); i > 0; i--){
+           double payment = dollars.theMath(); // mkaing a variable equal to payment needed based on month
+           System.out.println("\n Monthy Payment: " + currency.format(payment));
+           System.out.println("Amount left: " + currency.format(dollars.getPay()));
+           System.out.println("Amount paid so far: " + currency.format(dollars.getTotalPaid()) + "\n"); 
+       }
         
     }
 }
 
 class InterestRateCalculator {
-    public final double RATE = .035;//3.5%
+    public final double RATE = .1;//10%
     private double inputAmount;
     private double inputMonths;
-    private double remainAmount;
-    private double remainMonths;
-    private double toPay;
+    private double totalPaid = 0;
 
     public void setMoney (double inMoney){
         inputAmount = inMoney;//setting inital number equal to user input
@@ -55,14 +58,19 @@ class InterestRateCalculator {
     }
     
     
-    public void theMath(){
-        toPay = (remainAmount*RATE+remainAmount)/inputMonths;
-        
-        remainAmount = inputAmount-toPay;
-        inputMonths = inputMonths-1;
+    public double theMath(){
+        double payment = (inputAmount * RATE + inputAmount) / inputMonths;
+        inputAmount -= payment; // updating input amount by subtracting what you just payed
+        totalPaid += payment; // updating total paid by adding what you just paid
+        inputMonths--; // updating remaning month by subtracting one
+        return payment;
     }
+    
     public double getPay(){
-        return toPay;
+        return inputAmount;
+    }
+    public double getTotalPaid(){
+        return totalPaid;
     }
     public double getMonths(){
         return inputMonths;
