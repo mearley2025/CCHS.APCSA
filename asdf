@@ -1,0 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.assignment39;
+
+/**
+ *
+ * @author mearley2025
+ */
+
+import java.util.Scanner;
+
+public class Assignment39 {
+
+    public static void main(String[] args) {
+        
+       Scanner scan = new Scanner (System.in);//creating new scanner
+        
+       System.out.println("Input Course title:");
+       String intitle = scan.next();
+       
+       System.out.println("Enter course code, if no type 0:");
+       String incode = scan.next();
+       
+       System.out.println("Enter points for course, if no type null:");
+       int inpoints = scan.nextInt();
+       
+       System.out.println("Enter instructor name, if no type null::");
+       String ininame = scan.next();
+       
+       course course1 = new course(intitle, incode, inpoints, ininame); //creating new object
+       course1.setNumbers(intitle, incode, inpoints, ininame);
+       System.out.println(course1);
+    }
+}
+
+class course {
+    private String title;
+    private String code;
+    private int points;
+    private String iname;
+    
+    public course () {
+        title = null;
+        code = null;
+        points = 0;
+        iname = null;
+    }
+    public course (String n) {
+        title = null;
+        code = null;
+        points = 0;
+        iname = n;
+    }
+    public course (String t, String c, int p, String n){
+        title = t;
+        code = c;
+        points = p;
+        iname = n;
+    }
+    
+    //allowing for user input of values/numbers
+    public void setNumbers (String t, String c, int p, String n){
+        iname = t;
+        code = c;
+        points = p;
+        iname = n;
+    }
+    public String toString(){
+        String result = ""; //returns the state of the object (class) as a string
+        result = title + " is a course taught by " + iname + " and has a class code of " + code + " and a value of " + points + " points of credit.";
+        return result; //formatting the string that will be returned/printed
+    }
+}
