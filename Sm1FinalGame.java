@@ -11,6 +11,7 @@ have limitations so that if the user inputs something other than rock, paper, an
 make the game playable more than once (ask user yes/no and limit that so that it will output error if something else is entered)
 track the amount of times you win versus the computer on the screen (score) to be displayed after every turn
 end the game if no is typed when prompted, and display final message of wins and number of rounds played 
+to add complexity/show learned skills, output the final closing message using a seperate class that has 3 differnt messages based on gramatical correctness
 */
 
 
