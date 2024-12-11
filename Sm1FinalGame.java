@@ -127,15 +127,15 @@ class youWonMessage{
     
     public String toString(){
         String result = ""; //returns the state of the object (class) as a string
-        if (youWin1 == 1){
-            result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " rounds";//fixing grammar if you only 1 one round
-        }else if (rounds1 == 1){
-                  result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " round";//fixing grammar if you played one round
-        }else if (youWin1 == 1 && rounds1 == 1){
-                         result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " round";//fixing grammar if you played and won one round
-        } else {
-            result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " rounds";//regular closing message
-        }        
-        return result; //formatting the string that will be returned/printed
+    if (youWin1 == 1 && rounds1 == 1) {
+        result = "\nThank you for playing. You won 1 time out of 1 round.";
+    } else if (rounds1 == 1) {
+        result = "\nThank you for playing. You won " + youWin1 + " time" + (youWin1 == 1 ? "" : "s") + " out of 1 round.";
+    } else if (youWin1 == 1) {
+        result = "\nThank you for playing. You won 1 time out of " + rounds1 + " rounds.";//message if won 1 round
+    } else {
+        result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " rounds.";
+    }
+    return result;
     }
 }
