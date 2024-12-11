@@ -116,6 +116,8 @@ class youWonMessage{
         private int rounds1 = 0;
         private int youWin1 = 0;
         
+        
+        
     public void setRounds1 (int inrounds1){
         rounds1 = inrounds1;//setting round number equal to what is in the main
     }
@@ -126,12 +128,12 @@ class youWonMessage{
     public String toString(){
         String result = ""; //returns the state of the object (class) as a string
         if (youWin1 == 1){
-            result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " rounds";//fixing grammer if you only 1 one round
-                if (rounds1 == 1){
-                  result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " round";//fixing grammer if you played one round
-                     if (youWin1 == 1 && rounds1 == 1){
-                         result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " round";//fixing grammer if you played and won one round
-        }}} else {
+            result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " rounds";//fixing grammar if you only 1 one round
+        }else if (rounds1 == 1){
+                  result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " round";//fixing grammar if you played one round
+        }else if (youWin1 == 1 && rounds1 == 1){
+                         result = "\nThank you for playing. You won " + youWin1 + " time out of " + rounds1 + " round";//fixing grammar if you played and won one round
+        } else {
             result = "\nThank you for playing. You won " + youWin1 + " times out of " + rounds1 + " rounds";//regular closing message
         }        
         return result; //formatting the string that will be returned/printed
