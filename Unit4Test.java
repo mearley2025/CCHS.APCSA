@@ -19,7 +19,7 @@ package com.mycompany.unit4test;
  * Within main:
  * 1. make an array list so that it can store cards with no duplicates
  * 2. make something that would "draw" five unique cards and print
- * 3. make something that would read the value of the cards to see highest and print out
+ * 3. make something that would read the value of the cards to see highest and print out STILL NEED TO DO: read card suit values and set up the order the values go in in case the face values are the same!
  * 4. print out message containing highest card value
  * 
  * @author mearley2025
