@@ -8,7 +8,9 @@ package com.mycompany.assignment61;
  *
  * @author mearley2025
  */
-
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 public class Assignment61 {
 
     public static void main(String[] args) {
@@ -19,10 +21,10 @@ public class Assignment61 {
         for (int i = 0; i < weekDays.length; i++){
             System.out.println(weekDays[i]);//printing out days of the week in a new line per day
         }
-        
+          
+        //just weekdays
         System.out.println("\nWeekdays Only:");
         
-        //just weekdays
         String[] temp = new String [5];
         for (int i = 0; i < 5; i++) {
             temp[i] = weekDays[i];
@@ -32,6 +34,16 @@ public class Assignment61 {
             System.out.println(temp[i]);
         }//priting out new arrary with weekday
         
+        
+        //shuffling array
+        System.out.println("\nShuffled Days of the Week:");
+        List<String> weekList = Arrays.asList(weekDays);
+		Collections.shuffle(weekList);
+		weekList.toArray(weekDays);
+                        
+        for (int i = 0; i < weekDays.length; i++) {
+            System.out.println(weekDays[i]); // printing out shuffled days of the week in a new line per day
+        }
     }
     
 }
