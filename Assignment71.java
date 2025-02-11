@@ -12,7 +12,7 @@ public class Assignment71 {
     public static void main(String[] args) {
       Vehicle electricCar = new ElectricCar("Tesla", 135, 7, 4, "Model Y", 60, 8.25);
       Vehicle camperVan = new CamperVan ("Airstream", 90, 3, 4, "Atlas", 2, 1);
-      Vehicle submarine = new Submarine("Seawolf", 35.0, 140, "Hydrodynamic", 1, 107, 1600);
+      Vehicle submarine = new Submarine("Seawolf", 35.0, 140, "Hydrodynamic", "Neuclear Reactor", 107, 1600);
       
       System.out.println(electricCar);
       System.out.println("\n" + camperVan);
@@ -126,10 +126,10 @@ class CamperVan extends Car{
 //starting subclass, boat
 class Boat extends Vehicle {
     private String hullType;
-    private int poweredBy;
+    private String poweredBy;
     private int length;//in feet
     
-    public Boat (String inBrand, double inSpeed, int inPassengers, String hullType, int poweredBy, int length){
+    public Boat (String inBrand, double inSpeed, int inPassengers, String hullType, String poweredBy, int length){
         super (inBrand, inSpeed, inPassengers);
         this.hullType = hullType;
         this.poweredBy = poweredBy;
@@ -138,7 +138,7 @@ class Boat extends Vehicle {
     
     @Override
     public String toString(){
-        return super.toString() + "\nType of Hull: " + hullType + "Powered by: " + poweredBy;
+        return super.toString() + "\nType of Hull: " + hullType + "\nPowered by: " + poweredBy + "\nLength (ft): " + length;
     }
 }
 
@@ -146,14 +146,14 @@ class Boat extends Vehicle {
 class Submarine extends Boat {
     private int divingDepth;
     
-    public Submarine (String inBrand, double inSpeed, int inPassengers, String hullType, int poweredBy, int length, int divingDepth){
+    public Submarine (String inBrand, double inSpeed, int inPassengers, String hullType, String poweredBy, int length, int divingDepth){
         super (inBrand, inSpeed, inPassengers, hullType, poweredBy, length);
         this.divingDepth = divingDepth;
     }
     
     @Override
     public String toString(){
-        return super.toString() + "\nMax Diving Depth: " + divingDepth;
+        return super.toString() + "\nMax Diving Depth (ft): " + divingDepth;
     }
 }
 
