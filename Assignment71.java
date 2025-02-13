@@ -16,13 +16,17 @@ public class Assignment71 {
       Vehicle crewBoat = new CrewBoat ("Vespoli", 13.6, 2, "Displacement", "2 people", 34, "Sculling oars", "VHP 30");
       Vehicle cargoPlane = new CargoPlane("Boeing C-17 Globemaster III", 830.0, 102, 52, "4x Pratt & Whitney F117-PW-100 turbofan", 170900, "26.8m x 5.5m x 3.8m");
       Vehicle jetPlane = new JetPlane("Lockheed Martin F-22 Raptor", 2410.0, 1, 13, "Pratt & Whitney F119-PW-100 turbofan", 2);
+      Vehicle spaceShip = new SpaceShip("Galactic Cruiser", 300000, 23, 0.8, 5000);
+      Vehicle invisibleDrone = new InvisibleDrone("Stealth-X", 120, 1, 60, 180);
 
       System.out.println("Electric Car\n" + electricCar);
       System.out.println("\nCamper Van\n" + camperVan);
       System.out.println("\nSubmarine\n" + submarine);
       System.out.println("\nCrew (rowing) Boat\n" + crewBoat);
       System.out.println ("\nCargo Plane\n" + cargoPlane);
-      System.out.println ("\n Jet Plane\n" + jetPlane);
+      System.out.println ("\nJet Plane\n" + jetPlane);
+      System.out.println ("\nSpace Ship\n" + spaceShip);
+      System.out.println ("\nInvisible Drone\n" + invisibleDrone);
     }
 }
 
@@ -225,5 +229,38 @@ class JetPlane extends Airplane{
 @Override
     public String toString(){
         return super.toString() + "\nNumber of Engines: " + engineCount;
+    }
+}
+
+//unique vehicle 1
+class SpaceShip extends Vehicle {
+    private double maxLightSpeed; // Speed as a fraction of light speed (unit is c)
+    private int magneticBeamStrength; // Strength of magnetic beam in newtons
+
+    public SpaceShip(String inBrand, double inSpeed, int inPassengers, double maxLightSpeed, int mageticBeamsStrength) {
+        super (inBrand, inSpeed, inPassengers);
+        this.maxLightSpeed = maxLightSpeed;
+        this.magneticBeamStrength = magneticBeamStrength;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "\nMax Light Speed (c): " + maxLightSpeed + "\nMagnetic Beam Strength (N): " + magneticBeamStrength;
+    }
+}
+
+//unique vehicle 2
+class InvisibleDrone extends Vehicle {
+    private int maxInvisibilityTime; // in minutes
+    private int flightDuration; // in minutes
+
+    public InvisibleDrone(String inBrand, double inSpeed, int inPassengers, int maxInvisibilityTime, int flightDuration) {
+        super (inBrand, inSpeed, inPassengers);
+        this.maxInvisibilityTime = maxInvisibilityTime;
+        this.flightDuration = flightDuration;
+    }
+ @Override
+    public String toString() {
+        return super.toString() + "\nMax Invisibility Time (min): " + maxInvisibilityTime + "\nFlight Duration (min): " + flightDuration;
     }
 }
