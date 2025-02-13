@@ -13,10 +13,16 @@ public class Assignment71 {
       Vehicle electricCar = new ElectricCar("Tesla", 135, 7, 4, "Model Y", 60, 8.25);
       Vehicle camperVan = new CamperVan ("Airstream", 90, 3, 4, "Atlas", 2, 1);
       Vehicle submarine = new Submarine("Seawolf", 35.0, 140, "Hydrodynamic", "Neuclear Reactor", 107, 1600);
-      
-      System.out.println(electricCar);
-      System.out.println("\n" + camperVan);
-      System.out.println("\n" + submarine);
+      Vehicle crewBoat = new CrewBoat ("Vespoli", 13.6, 2, "Displacement", "2 people", 34, "Sculling oars", "VHP 30");
+      Vehicle cargoPlane = new CargoPlane("Boeing C-17 Globemaster III", 830.0, 102, 52, "4x Pratt & Whitney F117-PW-100 turbofan", 170900, "26.8m x 5.5m x 3.8m");
+      Vehicle jetPlane = new JetPlane("Lockheed Martin F-22 Raptor", 2410.0, 1, 13, "Pratt & Whitney F119-PW-100 turbofan", 2);
+
+      System.out.println("Electric Car\n" + electricCar);
+      System.out.println("\nCamper Van\n" + camperVan);
+      System.out.println("\nSubmarine\n" + submarine);
+      System.out.println("\nCrew (rowing) Boat\n" + crewBoat);
+      System.out.println ("\nCargo Plane\n" + cargoPlane);
+      System.out.println ("\n Jet Plane\n" + jetPlane);
     }
 }
 
@@ -45,9 +51,11 @@ class Vehicle implements Speedometer{
     public void setBrandName(String inBrand){
     brandName = inBrand;
     }
+    @Override
     public double getSpeed(){
     return speed;
     }
+    @Override
     public void setSpeed(double inSpeed){
     speed = inSpeed;
     }
@@ -72,7 +80,7 @@ public void setSpeed(double inSpeed);
 public double getSpeed();
 }
 
-//starting subclass, car
+//starting base class, car
 class Car extends Vehicle {
     protected int numberofDoors;
     protected String carModel;
@@ -123,11 +131,11 @@ class CamperVan extends Car{
     }
 }
 
-//starting subclass, boat
+//starting base class, boat
 class Boat extends Vehicle {
-    private String hullType;
-    private String poweredBy;
-    private int length;//in feet
+    protected String hullType;
+    protected String poweredBy;
+    protected int length;//in feet
     
     public Boat (String inBrand, double inSpeed, int inPassengers, String hullType, String poweredBy, int length){
         super (inBrand, inSpeed, inPassengers);
@@ -157,3 +165,65 @@ class Submarine extends Boat {
     }
 }
 
+//subclass of boat, rowing boat (8 person)
+class CrewBoat extends Boat{
+    private String oarType;
+    private String boatName;
+
+    public CrewBoat (String inBrand, double inSpeed, int inPassengers, String hullType, String poweredBy, int length, String oarType, String boatName){
+        super (inBrand, inSpeed, inPassengers, hullType, poweredBy, length);
+        this.oarType = oarType;
+        this.boatName = boatName;
+    }
+@Override
+    public String toString(){
+        return super.toString() + "\nOar Type: " + oarType + "\nBoat Name: " + boatName;
+    }
+}
+
+//starting base class, airplane 
+class Airplane extends Vehicle {
+    protected int wingspan; //in feet
+    protected String engine;
+    
+    public Airplane (String inBrand, double inSpeed, int inPassengers, int wingspan, String engine){
+        super (inBrand, inSpeed, inPassengers);
+        this.wingspan = wingspan;
+        this.engine = engine;
+    }
+    
+    @Override
+    public String toString(){
+        return super.toString() + "\nWingspan (ft): " + wingspan + "\nEngine Type: " + engine;
+    }
+}
+
+//subclass of airplane, cargo plane
+class CargoPlane extends Airplane{
+    private double weightCapacity;//in lbs
+    private String cargoArea;//length x width x height
+
+    public CargoPlane (String inBrand, double inSpeed, int inPassengers, int wingspan, String engine, double weightCapacity, String cargoArea){
+        super (inBrand, inSpeed, inPassengers, wingspan, engine);
+        this.weightCapacity = weightCapacity;
+        this.cargoArea = cargoArea;
+    }
+@Override
+    public String toString(){
+        return super.toString() + "\nWeight Capacity (lbs): " + weightCapacity + "\nCargo Area (lxwxh): " + cargoArea;
+    }
+}
+
+//subclass of airplane, jetplane
+class JetPlane extends Airplane{
+    private int engineCount; //number of engines
+    
+    public JetPlane (String inBrand, double inSpeed, int inPassengers, int wingspan, String engine, int engineCount){
+        super (inBrand, inSpeed, inPassengers, wingspan, engine);
+        this.engineCount = engineCount;
+    }
+@Override
+    public String toString(){
+        return super.toString() + "\nNumber of Engines: " + engineCount;
+    }
+}
