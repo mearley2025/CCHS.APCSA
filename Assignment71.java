@@ -89,7 +89,7 @@ public double getSpeed();
 
 //starting base class, car
 class Car extends Vehicle {
-    //new variables/features
+    //new variables or features
     protected int numberofDoors;
     protected String carModel;
     
@@ -104,7 +104,7 @@ class Car extends Vehicle {
     public String toString (){
         return super.toString() + "\nNumber of doors: " + numberofDoors + "\nCar model: " + carModel;//what will be printed out
     }
-}  //all below follows a similar structure as above, so commets are limited to anything different in structure
+}  //all below follows a similar structure as above, so comments are limited to anything different
 
 //subclass of car, electric car
 class ElectricCar extends Car{
