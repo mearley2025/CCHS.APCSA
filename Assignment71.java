@@ -10,7 +10,6 @@ package com.mycompany.assignment71;
  */
 public class Assignment71 {
     public static void main(String[] args) {
-        //creating different vehicle objects
       Vehicle electricCar = new ElectricCar("Tesla", 135, 7, 4, "Model Y", 60, 8.25);
       Vehicle camperVan = new CamperVan ("Airstream", 90, 3, 4, "Atlas", 2, 1);
       Vehicle submarine = new Submarine("Seawolf", 35.0, 140, "Hydrodynamic", "Neuclear Reactor", 107, 1600);
@@ -20,7 +19,6 @@ public class Assignment71 {
       Vehicle spaceShip = new SpaceShip("Galactic Cruiser", 300000, 23, 0.8, 5000);
       Vehicle invisibleDrone = new InvisibleDrone("Stealth-X", 120, 1, 60, 180);
 
-      //printing vehicle details
       System.out.println("Electric Car\n" + electricCar);
       System.out.println("\nCamper Van\n" + camperVan);
       System.out.println("\nSubmarine\n" + submarine);
@@ -80,7 +78,6 @@ class Vehicle implements Speedometer{
     return result;
     }
 }
-
 //the Speedometer interface to show the speed of any vehicle in the same way
 interface Speedometer{
 public void setSpeed(double inSpeed);
@@ -89,23 +86,21 @@ public double getSpeed();
 
 //starting base class, car
 class Car extends Vehicle {
-    //new variables or features
     protected int numberofDoors;
     protected String carModel;
     
     //constructor 
     public Car (String inBrand, double inSpeed, int inPassengers, int numberofDoors, String carModel){
-        super (inBrand, inSpeed, inPassengers); //inherits these features
+        super (inBrand, inSpeed, inPassengers);
         this.numberofDoors = numberofDoors;
         this.carModel = carModel;
     }
     
     @Override
     public String toString (){
-        return super.toString() + "\nNumber of doors: " + numberofDoors + "\nCar model: " + carModel;//what will be printed out
+        return super.toString() + "\nNumber of doors: " + numberofDoors + "\nCar model: " + carModel;
     }
-}  //all below follows a similar structure as above, so comments are limited to anything different
-
+}  
 //subclass of car, electric car
 class ElectricCar extends Car{
     private int batteryCapacity;
