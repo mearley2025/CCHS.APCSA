@@ -159,6 +159,7 @@ public class InheritanceGame {
         
         // select chosen difficulty
         
+        System.out.println("Welcome to the country guessing game");
         System.out.println("Please choose a difficulty\n\n - Easy\n - Medium\n - Hard\n");
         String diffChosen = "Easy";
         
@@ -234,7 +235,7 @@ class Game {
         int guessCount = 0;
         
         while (true) {
-          System.out.println("\nInput answer:");
+          System.out.println("\nInput your guess of country:");
           answer = scan2.nextLine();
           
           if (answer.equalsIgnoreCase(country.getName())){
